@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 151: end of line expected.
+    show sky1, leftright with dissolve
+             ^
+
+Ren'Py Version: Ren'Py 7.4.6.1693
+Mon Jun 21 19:14:27 2021
