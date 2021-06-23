@@ -29,7 +29,6 @@ label start:
     $currentstring = 10
     $maxstring = 10
 
-    jump lab1
 
     scene black
 
@@ -37,6 +36,7 @@ label start:
     centered "As a condition of peace, the people of Athens send 14 youths through the labyrinth gates every seven years."
     centered "None have returned."
     centered "Brave Theseus, you must end this folly. Speak with the princess Ariadne, enter the labyrinth, and…"
+    play music "audio/minotaur.mp3"
     centered "SLAY THE MINOTAUR"
 
     play music "audio/sb_chasingdaylight.mp3"
@@ -46,6 +46,9 @@ label start:
 
 
 label introduction:
+    show open
+    show ariadne
+    with dissolve
 
     ari "Theseus, my love, you’ve arrived! Your father allowed this?"
     thes "I gave him no choice. When the Minotaur is dead and I return to Athens, we shall fly the white flag of victory and my father will see me for the King that I am."
@@ -147,6 +150,7 @@ label endtutorial:
 
 
 label lab1:
+    $currentstring-=1
 
     show sky1
     show leftright
@@ -184,10 +188,10 @@ label yellow1:
         "{color=#ffba08}Yellow: Go to the left.{/color}"
 
         "Go to the left":
-            jump correct
+            jump correct1
 
-        "Go to ther right":
-            jump badroom
+        "Go to the right":
+            jump badroom1
 
 label green1:
 
@@ -197,30 +201,32 @@ label green1:
         "{color=#90be6d}Go to the left.{/color}"
 
         "Go to the left":
-            jump correct
+            jump correct1
 
         "Go to the right":
-            jump badroom
+            jump badroom1
 
 
 
 
 
-label correct:
-        show min with dissolve
+label correct1:
+        $currentstring-=1
+        centered "Correct."
 
-label badroom:
-    hide block with dissolve
-    centered "You picked the first block so you enter the door on your left."
+
+label badroom1:
+    $currentstring-=1
+
+    hide leftright
+    show deadend
+    with dissolve
+
+    thes "text about dead end"
+    jump correct1
+
 
     show min with dissolve
-
-
-
-
-label R2_c:
-    hide block with dissolve
-    centered "You picked the third block so you enter the door on your right."
 
 
 

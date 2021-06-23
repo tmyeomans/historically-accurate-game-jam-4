@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 151: end of line expected.
-    show sky1, leftright with dissolve
-             ^
+File "game/script.rpy", line 219: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Mon Jun 21 19:14:27 2021
+Wed Jun 23 08:07:23 2021
