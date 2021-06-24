@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 219: indentation mismatch.
+File "game/script.rpy", line 287: Say menuitems and captions may not exist in the same menu.
+    centered "{i}The Athenian joins you.{/i}"
+                                             ^
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Wed Jun 23 08:07:23 2021
+Thu Jun 24 07:54:10 2021

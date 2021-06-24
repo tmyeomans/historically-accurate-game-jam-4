@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 191, in script
-    jump badroom
-ScriptError: could not find label 'badroom'.
+  File "game/script.rpy", line 291, in script
+    b "Open it, Mary."
+Exception: Sayer 'b' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 191, in script
-    jump badroom
-  File "renpy/ast.py", line 1751, in execute
-    rv = renpy.game.script.lookup(target)
-  File "renpy/script.py", line 918, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'badroom'.
+  File "game/script.rpy", line 291, in script
+    b "Open it, Mary."
+  File "renpy/ast.py", line 680, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "renpy/ast.py", line 574, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'b' is not defined.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.6.1693
-The Minotaur 1.0
-Wed Jun 23 08:10:05 2021
+The Minotaur 
+Thu Jun 24 07:51:38 2021
