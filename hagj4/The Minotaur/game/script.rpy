@@ -55,8 +55,6 @@ label start:
     $currentstring = 10
     $maxstring = 10
 
-    jump advisor1
-
     scene black
 
     centered "On the island of Crete lives the fearsome minotaur, roaming the passages of Daedalus’s labyrinth."
