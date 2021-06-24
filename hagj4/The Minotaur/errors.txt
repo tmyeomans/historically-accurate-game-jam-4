@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 287: Say menuitems and captions may not exist in the same menu.
-    centered "{i}The Athenian joins you.{/i}"
-                                             ^
+File "game/script.rpy", line 331: menu statement expects a non-empty block.
+    menu:
+        ^
+
+File "game/script.rpy", line 336: expected statement.
+    "Ask Orange to join you.":
+                             ^
+
+File "game/script.rpy", line 339: expected statement.
+    "Ask Purple to join you.":
+                             ^
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Thu Jun 24 07:54:10 2021
+Thu Jun 24 08:30:44 2021

@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 291, in script
-    b "Open it, Mary."
-Exception: Sayer 'b' is not defined.
+  File "game/script.rpy", line 371, in script
+    if comp1 == "Correct":
+  File "game/script.rpy", line 371, in <module>
+    if comp1 == "Correct":
+NameError: name 'comp1' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 291, in script
-    b "Open it, Mary."
-  File "renpy/ast.py", line 680, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'b' is not defined.
+  File "game/script.rpy", line 371, in script
+    if comp1 == "Correct":
+  File "renpy/ast.py", line 1892, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2249, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2242, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 371, in <module>
+    if comp1 == "Correct":
+NameError: name 'comp1' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.6.1693
 The Minotaur 
-Thu Jun 24 07:51:38 2021
+Thu Jun 24 11:43:52 2021
