@@ -1,13 +1,13 @@
-Thu Jun 24 11:57:55 2021
+Fri Jun 25 08:05:01 2021
 Windows-10-10.0.19041
 Ren'Py 7.4.6.1693
  
 
-Bootstrap to the start of init.init took 0.06s
+Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.04s
 Loading error handling took 0.01s
-Loading script took 0.08s
+Loading script took 0.14s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
@@ -15,7 +15,8 @@ Running init code took 0.04s
 Loading analysis data took 0.01s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
-Dump and make backups. took 0.04s
+Backing up script files to 'C:\\Users\\rx99c\\AppData\\Roaming/RenPy/backups\\The Minotaur':
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.01s
@@ -26,9 +27,9 @@ Creating interface object took 0.22s
 Cleaning stores took 0.00s
 Init translation took 0.03s
 Build styles took 0.00s
-Load screen analysis took 0.01s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
 Prepare screens took 0.04s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.02s
@@ -46,4 +47,4 @@ Version: '4.6.0 NVIDIA 452.56'
 Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(3659, 2058) drawable=(3659, 2058)
 Maximum texture size: 4096x4096
-Total time until interface ready: 1.00826096535s
+Total time until interface ready: 1.08482217789s

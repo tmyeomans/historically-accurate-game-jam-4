@@ -87,7 +87,7 @@ label introduction:
     hide sword with dissolve
     show thread with dissolve
 
-    centered "{i}When you reach a dead end, use the thread to backtrack. With each step forward or back, your thread count will deplete (see the meter at top of screen).{/i}"
+    "{i}When you reach a dead end, use the thread to backtrack. With each step forward or back, your thread count will deplete (see the meter at top of screen).{/i}"
     hide thread with dissolve
 
     thes "My thanks, good Ariadne! And now I am ready."
@@ -233,8 +233,13 @@ label green1:
 
 
 label correct1:
-        $currentstring-=1
-        centered "Correct."
+    $currentstring-=1
+    centered "Correct."
+    ##################fix jump when more puzzles added
+#    hide leftright
+#    hide athenians
+#    with dissolve
+    jump endinstructions
 
 
 label badroom1:
@@ -244,7 +249,7 @@ label badroom1:
     hide athenians
     show deadend
     with dissolve
-
+############ fix text about dead end
     thes "text about dead end"
     hide deadend with dissolve
     jump lab1
@@ -253,11 +258,20 @@ label badroom1:
 
 
 label endinstructions:
+
+
+    hide sky1
+    hide sky2
+    hide stringbar
+    hide leftright
+    hide athenians
+    with dissolve
+    centered "{i}As you venture further into the labyrinth, the winding corridors and intersections give way to a straight path – a hallway at the end of which you can faintly see a series of doors. An Athenian clad in white approaches:{/i}"
     show sky3
     show straight
     with dissolve
 
-    centered "{i}As you venture further into the labyrinth, the winding corridors and intersections give way to a straight path – a hallway at the end of which you can faintly see a series of doors. An Athenian clad in white approaches:{/i}"
+
     wc "Ah! The brave prince Theseus! You have no doubt come to save us from this torturous maze?"
     thes "I have. And from your words I know that you are among the truth-tellers of my kin. So tell me: where is the minotaur, that I may slay it?"
     wc "The minotaur is at the end of this hall; that much is known. But as noble as you are, you cannot defeat it in combat, for its strength far exceeds that of any man."
@@ -276,28 +290,28 @@ label advisor1:
     show athenians
     with dissolve
 
-    centered "{i}As you depart from the honest man, you see a pair of Athenians down the hall and stop to hear their words.{/i}"
+    "{i}As you depart from the honest man, you see a pair of Athenians down the hall and stop to hear their words.{/i}"
     yc "Either I’m a truth-teller or Green is."
-    gc "Green: Yellow is a liar."
-    centered "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
+    gc "Yellow is a liar."
+    "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
 
     menu:
-        "{color=#ffba08}(Yellow: Either I’m a truth-teller or Green is.).{/color}"
-        "{color=#90be6d}(Green: Yellow is a liar.).{/color}"
-        "{color=#FFFFFF}{i} You can ask only one of these Athenians to join you as an advisor. Who do you choose?.{/i}{/color}"
+        "{color=#ffba08}(Yellow: Either I’m a truth-teller or Green is){/color}"
+        "{color=#90be6d}(Green: Yellow is a liar){/color}"
+        "{color=#FFFFFF}{i} You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}{/color}"
 
 
         "Ask Yellow to join you.":
             $ comp1 = "Correct"
-            centered "{i}The Athenian joins you.{/i}"
+            "{i}The Athenian joins you.{/i}"
 
         "Ask Green to join you.":
             $ comp1 = "Incorrect"
-            centered "{i}The Athenian joins you.{/i}"
+            "{i}The Athenian joins you.{/i}"
 
 label advisor2:
 
-    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice an unusual pattern.{/i}"
+    "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice an unusual pattern.{/i}"
     show upside
     with dissolve
     "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
@@ -307,26 +321,26 @@ label advisor2:
 
         "Ask Red to join you.":
             $ comp2 = "Correct"
-#            centered "{i}The Athenian joins you.{/i}"
+
 
         "Ask Blue to join you.":
             $ comp2 = "Incorrect"
-#            centered "{i}The Athenian joins you.{/i}"
+
 
 
 label advisor3:
     hide upside
     with dissolve
 
-    centered "{i}You proceed down the passage, now with two of your people following. Again you encounter a pair of Athenians.{/i}"
+    "{i}You proceed down the passage, now with two of your people following. Again you encounter a pair of Athenians.{/i}"
 
     oc "Either we’re both truth-tellers or we’re both liars."
     pc "One of us is a truth-teller and the other is a liar."
-    centered "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
+    "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
 
     menu:
-        "{color=ff9e00}(Orange: Either we’re both truth-tellers or we’re both liars.){/color}"
-        "{color=#deaaff}(Purple: One of us is a truth-teller and the other is a liar.){/color}"
+        "{color=ff9e00}(Orange: Either we’re both truth-tellers or we’re both liars){/color}"
+        "{color=#deaaff}(Purple: One of us is a truth-teller and the other is a liar){/color}"
         "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
 
         "Ask Orange to join you.":
@@ -337,7 +351,7 @@ label advisor3:
 
 
 label advisor4:
-    centered "{i}The third Athenian joins your growing band.Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur. Neither speaks, but again you see a set of mysterious markings on the ground.{/i}"
+    "{i}The third Athenian joins your growing band.Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur. Neither speaks, but again you see a set of mysterious markings on the ground.{/i}"
     show maze
     with dissolve
 
@@ -358,6 +372,7 @@ label curtains:
     hide straight
     hide sky3
     with dissolve
+    play music "audio/sb_pathfinder.mp3" fadein 2
     centered "{i}With four fellow Athenians at your side, you tread cautiously to the end of the hall.{/i}"
 
     show doors
@@ -441,10 +456,11 @@ label foundminotaur:
 
 
 label badend:
+
     hide empty
     hide minotaur
     with dissolve
-
+    play music "audio/sb_reverie.mp3"
     show sea
     show blackship
     with dissolve
@@ -454,6 +470,7 @@ label badend:
 label goodend:
     hide deadminotaur
     with dissolve
+    play music "audio/sb_reverie.mp3"
     show sea
     show whiteship
     with dissolve
@@ -480,7 +497,13 @@ label goose:
 
 
 label attribution:
-    centered "Music by Scott Buckley: https://www.scottbuckley.com.au/library/chasing-daylight/"
+    hide goose with dissolve
+
+    centered "Music by Scott Buckley:\n
+    Chasing Daylight - https://www.scottbuckley.com.au/library/chasing-daylight/\n
+    Pathfinder - https://www.scottbuckley.com.au/library/pathfinder/\n
+    Reverie - https://www.scottbuckley.com.au/library/reverie/"
+
 
 
 
