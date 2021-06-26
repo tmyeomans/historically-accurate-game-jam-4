@@ -53,7 +53,7 @@ screen stringbar:
 # The game starts here.
 label start:
 
-    jump endinstructions
+
 
     $currentstring = 10
     $maxstring = 10
@@ -71,7 +71,7 @@ label start:
     centered "{size=100}{color=#f00}The Minotaur{/size}{/color}"
 
 #############
-    #jump lab1intro
+
 
 label introduction:
     show open
@@ -195,7 +195,8 @@ label lab1intro:
 
     thes "Greetings!"
     "{i}They say nothing.{/i}"
-    "{i}You recall Ariadne’s remarks that they are cursed and unable to speak as normal. Some will tell only the truth, others will tell only lies. And so the men before you may both be liars, or they may both be truth-tellers, or one may be a liar and the other a truth-teller.{/i}"
+    "{i}You recall Ariadne’s remarks that they are cursed and unable to speak as normal.{/i}"
+    "{i}Some will tell only the truth, others will tell only lies. And so the men before you may both be liars, or they may both be truth-tellers, or one may be a liar and the other a truth-teller.{/i}"
 
 label lab1:
 #################
@@ -217,7 +218,7 @@ label lab1:
     menu:
         "{color=#ffba08} (Yellow: He and I are both truth-tellers){/color}"
         "{color=#90be6d} (Green: He is a liar){/color}"
-        "You can ask only one of them for directions. Who do you ask?"
+        "{i}You can ask only one of them for directions. Who do you ask?{/i}"
 
         "Ask Yellow which way to go.":
             jump yellow1
@@ -276,7 +277,7 @@ label badroom1:
 
     "{i}You have reached a dead end, with no way forward.{/i}"
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
         hide deadend with dissolve
         jump lab1
 
@@ -320,8 +321,11 @@ label badroom2:
     with dissolve
     "{i}You have reached a dead end, with no way forward.{/i}"
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
-        hide deadend with dissolve
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
+        hide deadend
+        hide shapes
+        hide sky1
+        with dissolve
         jump lab2
 
     if currentstring <= 0:
@@ -340,8 +344,9 @@ label lab3:
     with dissolve
 
     centered "{i}Again, the path forks, with no evidence as to which path leads to the minotaur, and no Athenians to give guidance.{/i}"
-    show leftright
+
     show sky1
+    show leftright
     show screen stringbar
     with dissolve
     $currentstring-=1
@@ -371,7 +376,7 @@ label badroom3:
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
         hide deadend with dissolve
         jump lab3
 
@@ -459,7 +464,7 @@ label badroom4:
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
         hide deadend with dissolve
         jump lab4
 
@@ -479,7 +484,7 @@ label lab5:
     hide orangepurple
     hide screen stringbar
     with dissolve
-    "{i}A long straightway lays before you. In the distance, you see another branching path. But first, immediately before you, is a man you’ve not seen before.{/i}"
+    centered "{i}A long straightway lays before you. In the distance, you see another branching path. But first, immediately before you, is a man you’ve not seen before.{/i}"
     show sky1
     show straight
     show ajax
@@ -491,8 +496,10 @@ label lab5:
     thes "But why should I believe that? The same would be said by a liar."
     ajax "Ah yes, but as I’m sure you now know, the liars of this maze can speak only lies and never truth. So to prove my honesty, I tell you this: the sky is blue, your sword is sharp, and Zeus is mighty."
     thes "Very well then! I agree that you must be an honest man. But the path ahead is straight, so I have no need of your advice. Please step aside and I shall be on my way."
-    ajax "But I have a gift for you. And I will give it, so long as you can assure me that you are indeed Theseus, my prince. If you are him, I trust you have met the Cretan princess Ariadne. As it happens, so have I. Now tell me, Theseus, so that I may be reassured – what does Ariadne look like?"
-    "{i}You feel the effects of the labyrinth clouding your mind, and even the recent image of Ariadne is as hazy as an encounter from childhood. You recall the appearances of maidens you’ve met recently. Which of them is the princess Ariadne?{/i}"
+    ajax "But I have a gift for you. And I will give it, so long as you can assure me that you are indeed Theseus, my prince. If you are him, I trust you have met the Cretan princess Ariadne. As it happens, so have I."
+    ajax "Now tell me, Theseus, so that I may be reassured – what does Ariadne look like?"
+    "{i}You feel the effects of the labyrinth clouding your mind, and even the recent image of Ariadne is as hazy as an encounter from childhood.{/i}"
+    "{i}You recall the appearances of maidens you’ve met recently. Which of them is the princess Ariadne?{/i}"
 
     hide ajax
     show ariadne
@@ -503,7 +510,7 @@ label lab5:
         "{i}Which of them is the princess Ariadne?{/i}"
 
         "Describe the left-most person":
-            $ goose = "goose"
+            $ goosevar = "won"
             jump gooseright
         "Describe the person second from left":
             jump goosewrong
@@ -579,7 +586,7 @@ label brown1:
         "Go to the left":
             jump badroom6
         "Go to the right":
-            jump lab7
+            jump lab7intro
 
 label grey1:
     grc "Go to the right."
@@ -605,7 +612,7 @@ label badroom6:
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
         hide deadend with dissolve
         jump lab6
 
@@ -656,7 +663,7 @@ label badroom7:
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
-        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
         hide deadend with dissolve
         jump lab7
 
@@ -694,7 +701,8 @@ label endinstructions:
     wc "But wait! For Daedalus created several other such rooms, each of which holds a great treasure of the land: the Golden Fleece, Heracles’s Bow, the Shield of Achilles, and the Sword of Peleus."
     wc "I fear that if you strike into one of these rooms of treasure you’ll succeed only in awakening the beast, and shall soon thereafter be devoured."
     thes "Do you know which room is which?"
-    wc "Alas, I do not. But our fellow Athenians, who rest in this hallway, surely do. Choose among them they will surely off the knowledge you need. But choose these advisors carefully, for among them are deceiver who will just as surely lead you astray."
+    wc "Alas, I do not. But our fellow Athenians, who rest in this hallway, surely do."
+    wc"Choose among them they will surely off the knowledge you need. But choose these advisors carefully, for among them are deceiver who will just as surely lead you astray."
     thes "Many thanks for this wisdom, dear friend!"
     wc "Godspeed, Theseus!"
     hide white
@@ -735,7 +743,7 @@ label advisor2:
     hide straight
     with dissolve
 
-    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you noticesomething unusual about the stones.{/i}"
+    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice something unusual about the stones.{/i}"
 
     show sky3
     show straight
@@ -827,7 +835,9 @@ label curtains:
     play music "audio/sb_pathfinder.mp3" fadein 2
     centered "{i}With four fellow Athenians at your side, you tread cautiously to the end of the hall.{/i}"
 
-    centered "{i}The passage widens, and a wall stands before you, with five doorways and five curtains. Behind one of those doorways lies the minotaur. Behind the others are the lost treasures of the gods. Though the treasures are tempting, they cannot distract from your mission.{/i}"
+    centered "{i}The passage widens, and a wall stands before you, with five doorways and five curtains.\n
+    Behind one of those doorways lies the minotaur. Behind the others are the lost treasures of the gods.\n
+    Though the treasures are tempting, they cannot distract from your mission.{/i}\n"
     show doors
     with dissolve
     "{i}You turn to the other Athenians for guidance. {u}Remember: the advice they provide will only be accurate if they are indeed truth-tellers. If there are liars among them, they may lead you astray.{/u}"
@@ -885,12 +895,12 @@ label wrongstab:
     centered "{i}You step toward the door and slowly unsheathe Ariadne’s sword. Saying a silent prayer to Athena, you draw the sword back and plunge it through the curtain…{/i}"
     show empty
     with dissolve
-    centered "{i}…only to strike the empty air! Below, you see a glorious treasure of the gods, and reach to take it.{/i}"
+    "{i}…only to strike the empty air! Below, you see a glorious treasure of the gods, and reach to take it.{/i}"
     play sound "audio/minotaur.mp3"
     show minotaur
     with dissolve
 
-    "{w}{i}Theseus, the brave would-be hero of Athens, has fallen.{/i}"
+    "{i}Theseus, the brave would-be hero of Athens, has fallen.{/i}"
     jump badend
 
 label foundminotaur:
@@ -926,6 +936,7 @@ label badend:
 
 label goodend:
     hide deadminotaur
+    hide empty
     with dissolve
     play music "audio/sb_reverie.mp3"
     show sea
@@ -936,13 +947,18 @@ label goodend:
     "{i}Heracles’s Bow{/i}"
     "{i}The Shield of Achilles{/i}"
     "{i}The Sword of Peleus{/i}"
+    if goosevar == "won":
+        jump goosescreen
+    jump attribution
 
-label goose:
+label goosescreen:
     hide sea
     hide whiteship
     with dissolve
 
+
     "{i}and the greatest treasure of all,{/i}"
+    show open
     show goose
     with dissolve
     play sound "audio/goose.mp3"
@@ -954,7 +970,10 @@ label goose:
 
 
 label attribution:
-    hide goose with dissolve
+    hide goose
+    hide sea
+    hide whiteship
+    hide blackship
 
     centered "Music by Scott Buckley:\n
     Chasing Daylight - https://www.scottbuckley.com.au/library/chasing-daylight/\n
