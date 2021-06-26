@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 331: menu statement expects a non-empty block.
-    menu:
-        ^
-
-File "game/script.rpy", line 336: expected statement.
-    "Ask Orange to join you.":
-                             ^
-
-File "game/script.rpy", line 339: expected statement.
-    "Ask Purple to join you.":
-                             ^
+File "game/script.rpy", line 523: end of line expected.
+    jump lab6 intro
+              ^
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Thu Jun 24 08:30:44 2021
+Fri Jun 25 20:07:48 2021

@@ -1,6 +1,5 @@
-﻿# The script of the game goes in this file.
-
-
+﻿#The Minotaur by S. Latta and T. Yeomans
+#Submission for the Historically Accurate Game Jam 4
 
 init:
      $ thes= Character("Theseus",color = "#3a86ff", what_color = "#3a86ff")
@@ -41,6 +40,9 @@ init:
 init:
      $grc= Character("Grey", color = "#adb5bd", what_color = "#adb5bd")
 
+init:
+     $ajax= Character("Ajax", color = "#DACC3E", what_color = "#DACC3E")
+
 
 
 screen stringbar:
@@ -51,6 +53,7 @@ screen stringbar:
 # The game starts here.
 label start:
 
+    jump endinstructions
 
     $currentstring = 10
     $maxstring = 10
@@ -67,8 +70,8 @@ label start:
     play music "audio/sb_chasingdaylight.mp3"
     centered "{size=100}{color=#f00}The Minotaur{/size}{/color}"
 
-
-
+#############
+    #jump lab1intro
 
 label introduction:
     show open
@@ -175,8 +178,13 @@ label endtutorial:
     with dissolve
     centered "{i}Theseus follows the wall of the great labyrinth until he finds an opening. And with that, his journey begins.{/i}"
 
-label lab1:
-    $currentstring-=1
+
+
+#################### end of tutorial ###########################
+label lab1intro:
+
+    centered"{i}As you enter the great labyrinth, you see little more than thick stone walls, dry and crumbling but sturdy. You follow the path as it twists and turns until you reach a junction, with a door on each side.{/i}"
+    "{i}Two men, recognizable for their Athenian attire, stand before you.{/i}"
 
     show sky1
     show leftright
@@ -185,12 +193,30 @@ label lab1:
     show screen stringbar
     with dissolve
 
-    yc "Either Green’s a truth teller or I am. But not both of us."
-    gc "A liar would tell you that Yellow is a liar."
+    thes "Greetings!"
+    "{i}They say nothing.{/i}"
+    "{i}You recall Ariadne’s remarks that they are cursed and unable to speak as normal. Some will tell only the truth, others will tell only lies. And so the men before you may both be liars, or they may both be truth-tellers, or one may be a liar and the other a truth-teller.{/i}"
+
+label lab1:
+#################
+#some text about unwinding a length of thread
+    $currentstring-=1
+    show sky1
+    show leftright
+    show stringback
+    show athenians
+    show screen stringbar
+    with dissolve
+
+
+
+
+    yc "He and I are both truth-tellers."
+    gc "He is a liar."
 
     menu:
-        "{color=#ffba08} (Yellow: Either Green’s a truth teller or I am. But not both of us.){/color}"
-        "{color=#90be6d} (Green: A liar would tell you that Yellow is a liar.){/color}"
+        "{color=#ffba08} (Yellow: He and I are both truth-tellers){/color}"
+        "{color=#90be6d} (Green: He is a liar){/color}"
         "You can ask only one of them for directions. Who do you ask?"
 
         "Ask Yellow which way to go.":
@@ -205,41 +231,39 @@ label yellow1:
     yc "Go left"
 
     menu:
-        "{color=#ffba08}(Yellow: Either Green’s a truth teller or I am. But not both of us).{/color}"
-        "{color=#90be6d}(Green: A liar would tell you that Yellow is a liar).{/color}"
-        "{color=#ffba08}Yellow: Go to the left.{/color}"
+        "{color=#ffba08}(Yellow: He and I are both truth-tellers){/color}"
+        "{color=#90be6d}(Green: He is a liar){/color}"
+        "{color=#ffba08}(Yellow: Go to the left){/color}"
 
         "Go to the left":
-            jump correct1
+            jump badroom1
 
         "Go to the right":
-            jump badroom1
+            jump correct1
 
 label green1:
 
-    gc "Go left"
+    gc "Go to the right."
 
     menu:
-        "{color=#90be6d}Go to the left.{/color}"
+        "{color=#ffba08}(Yellow: He and I are both truth-tellers){/color}"
+        "{color=#90be6d}(Green: He is a liar){/color}"
+        "{color=#90be6d}(Green: Go to the right){/color}"
 
         "Go to the left":
-            jump correct1
-
-        "Go to the right":
             jump badroom1
 
-
-
+        "Go to the right":
+            jump correct1
 
 
 label correct1:
     $currentstring-=1
-    centered "Correct."
-    ##################fix jump when more puzzles added
-#    hide leftright
-#    hide athenians
-#    with dissolve
-    jump endinstructions
+    hide leftright
+    hide athenians
+    hide sky1
+    with dissolve
+    jump lab2
 
 
 label badroom1:
@@ -249,26 +273,415 @@ label badroom1:
     hide athenians
     show deadend
     with dissolve
-############ fix text about dead end
-    thes "text about dead end"
-    hide deadend with dissolve
-    jump lab1
+
+    "{i}You have reached a dead end, with no way forward.{/i}"
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab1
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+
+label lab2:
+    hide screen stringbar
+    with dissolve
+    centered "{i}As you continue further, you see a three-way divide in the path. But there are no nearby Athenians to offer guidance.{/i}"
+    show screen stringbar
+    with dissolve
+    show sky1
+    show threechoice
+    pause 2.0
+    show shapes
+    with dissolve
+    "{i}Puzzled, you look around, noticing a strange etching on the rock floor adjacent to the forked road.{/i}"
+
+
+    menu:
+        "Go to the left":
+            jump lab3
+
+        "Go straight ahead":
+            jump badroom2
+
+        "Go to the right":
+            jump badroom2
+
+label badroom2:
+
+    $currentstring-=1
+    hide threechoice
+    show deadend
+    with dissolve
+    "{i}You have reached a dead end, with no way forward.{/i}"
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab2
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+
+label lab3:
+    hide threechoice
+    hide sky1
+    hide screen stringbar
+    hide shapes
+    with dissolve
+
+    centered "{i}Again, the path forks, with no evidence as to which path leads to the minotaur, and no Athenians to give guidance.{/i}"
+    show leftright
+    show sky1
+    show screen stringbar
+    with dissolve
+    $currentstring-=1
+    pause 2.0
+
+    show maze
+    with dissolve
+    "{i}A maze is etched on to the wall in front of you. You jump forward with excitement, believing this to be a map of the labyrinth itself. But in tracing its lines, you quickly realize that its passageways don’t match with those you’ve already traversed. Perhaps it will offer guidance in some other way?{/i}"
 
 
 
+    menu:
+        "Go to the left":
+            jump lab4intro
 
+        "Go to the right":
+            jump badroom3
+
+label badroom3:
+
+    $currentstring-=1
+    hide leftright
+    hide maze
+    show deadend
+    with dissolve
+
+    "{i}You have reached a dead end, with no way forward.{/i}"
+
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab3
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+
+
+label lab4intro:
+    hide maze
+    hide sky1
+    hide leftright
+    with dissolve
+    centered "{i}That seems to have been the correct path, for you encounter yet another intersection, with two more Athenians idling nearby.{/i}"
+
+label lab4:
+    $currentstring-=1
+    show sky1
+    show leftright
+    show orangepurple
+    with dissolve
+
+    oc "I am a truth-teller or she is a liar."
+    pc "One of us is a truth-teller, but not both of us."
+
+    "{i}You can ask only one of them for directions. Who do you ask?{/i}"
+
+    menu:
+        "{color=ff9e00}(Orange: I am a truth-teller or she is a liar){/color}"
+        "{color=deaaff}(Purple: One of us is a truth-teller, but not both of us){/color}"
+        "{i}You can ask only one of them for directions. Who do you ask?{/i}"
+
+        "Ask Orange which way to go":
+            jump orange1
+
+
+        "Ask Purple which way to go":
+            jump purple1
+
+label orange1:
+    oc "Go to the left."
+
+    menu:
+
+        "{color=ff9e00}(Orange: I am a truth-teller or she is a liar){/color}"
+        "{color=deaaff}(Purple: One of us is a truth-teller, but not both of us){/color}"
+        "{color=ff9e00}(Orange: Go to the left){/color}"
+
+        "Go to the left":
+            jump badroom4
+
+        "Go to the right":
+            jump lab5
+
+
+label purple1:
+    pc "Go to the right."
+
+    menu:
+
+        "{color=ff9e00}(Orange: I am a truth-teller or she is a liar){/color}"
+        "{color=deaaff}(Purple: One of us is a truth-teller, but not both of us){/color}"
+        "{color=deaaff}(Purple: Go to the right){/color}"
+
+        "Go to the left":
+            jump badroom4
+
+        "Go to the right":
+            jump lab5
+
+
+
+label badroom4:
+
+    $currentstring-=1
+    hide leftright
+    hide orangepurple
+    show deadend
+    with dissolve
+
+    "{i}You have reached a dead end, with no way forward.{/i}"
+
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab4
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+
+
+label lab5:
+    $currentstring-=1
+    hide sky1
+    hide leftright
+    hide orangepurple
+    hide screen stringbar
+    with dissolve
+    "{i}A long straightway lays before you. In the distance, you see another branching path. But first, immediately before you, is a man you’ve not seen before.{/i}"
+    show sky1
+    show straight
+    show ajax
+    with dissolve
+
+    ajax "Greetings, fellow traveller of the labyrinth. I am Ajax."
+    thes "And are you among the honest or the dishonest of this maze’s inhabitants?"
+    ajax "I am of course, among the honest."
+    thes "But why should I believe that? The same would be said by a liar."
+    ajax "Ah yes, but as I’m sure you now know, the liars of this maze can speak only lies and never truth. So to prove my honesty, I tell you this: the sky is blue, your sword is sharp, and Zeus is mighty."
+    thes "Very well then! I agree that you must be an honest man. But the path ahead is straight, so I have no need of your advice. Please step aside and I shall be on my way."
+    ajax "But I have a gift for you. And I will give it, so long as you can assure me that you are indeed Theseus, my prince. If you are him, I trust you have met the Cretan princess Ariadne. As it happens, so have I. Now tell me, Theseus, so that I may be reassured – what does Ariadne look like?"
+    "{i}You feel the effects of the labyrinth clouding your mind, and even the recent image of Ariadne is as hazy as an encounter from childhood. You recall the appearances of maidens you’ve met recently. Which of them is the princess Ariadne?{/i}"
+
+    hide ajax
+    show ariadne
+    show helena
+    show redblue
+    with dissolve
+    menu:
+        "{i}Which of them is the princess Ariadne?{/i}"
+
+        "Describe the left-most person":
+            $ goose = "goose"
+            jump gooseright
+        "Describe the person second from left":
+            jump goosewrong
+        "Describe the person second from right":
+            jump goosewrong
+        "Describe the right-most person":
+            jump goosewrong
+
+
+label gooseright:
+    hide ariadne
+    hide helena
+    hide redblue
+    show ajax
+    with dissolve
+    ajax "Exactly as I remember her! You are indeed Theseus, come to save us. And so I shall give you this gift, that it may bring you good fortune and many eggs."
+    "{i}Ajax reveals a large goose from under his robes, which he must have hidden at some discomfort to both himself and the goose.{i}"
+    thes "I don’t understand this strange gift. Nonetheless, you have my gratitude, fellow Athenian! I will repay you in coin once we’ve escaped the bounds of this labyrinth."
+    hide ajax
+    with dissolve
+    jump lab6intro
+
+label goosewrong:
+    hide ariadne
+    hide helena
+    hide redblue
+    show ajax
+    with dissolve
+    ajax "That is not the Ariadne I know of. Perhaps you are not the honest hero I expected. No, you are as confused as all the others in this maze."
+    "{i}The man turns away from you and strolls off in the direction you came. From behind, you hear a strange bird sound– the honk of a goose? – but continue down the hall.{/i}"
+    hide ajax
+    hide straight
+    hide sky1
+    hide screen stringbar
+    with dissolve
+    jump lab6intro
+
+label lab6intro:
+    hide straight
+    hide sky1
+    with dissolve
+    centered "{i}As you follow the path, you encounter a pair of Athenian men. They have a strange look to their faces, as if their minds are already returned to Athens, eating olives in the agora.{/i}"
+
+label lab6:
+    show sky1
+    show leftright
+    show browngrey
+    with dissolve
+    show screen stringbar
+    $currentstring-=1
+
+    bc "He and I are both truth-tellers, or we’re both liars."
+    grc "He would say that I’m a truth-teller."
+    "{i}You can ask only one of them for directions. Who do you ask?{/i}"
+
+    menu:
+        "{color=c38e70}(Brown: He and I are both truth-tellers, or we’re both liars){/color}"
+        "{color=adb5bd}(Grey: He would say that I’m a truth-teller){/color}"
+        "{i}You can ask only one of them for directions. Who do you ask?{/i}"
+
+        "Ask Brown which way to go":
+            jump brown1
+        "Ask Grey which way to go":
+            jump grey1
+
+label brown1:
+    bc "Go to the right."
+    menu:
+        "{color=c38e70}(Brown: He and I are both truth-tellers, or we’re both liars){/color}"
+        "{color=adb5bd}(Grey: He would say that I’m a truth-teller){/color}"
+        "{color=c38e70}(Brown: Go to the right){/color}"
+
+        "Go to the left":
+            jump badroom6
+        "Go to the right":
+            jump lab7
+
+label grey1:
+    grc "Go to the right."
+    menu:
+        "{color=c38e70}(Brown: He and I are both truth-tellers, or we’re both liars){/color}"
+        "{color=adb5bd}(Grey: He would say that I’m a truth-teller){/color}"
+        "{color=adb5bd}(Grey: Go to the right){/color}"
+
+        "Go to the left":
+            jump badroom6
+        "Go to the right":
+            jump lab7intro
+
+
+label badroom6:
+
+    $currentstring-=1
+    hide leftright
+    hide browngrey
+    show deadend
+    with dissolve
+
+    "{i}You have reached a dead end, with no way forward.{/i}"
+
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab6
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+label lab7intro:
+    hide sky1
+    hide browngrey
+    hide leftright
+    hide straight
+    hide screen stringbar
+
+    centered "{i}You continue onward, following one winding path after another. You sense that the endpoint of the labyrinth is near and that you will soon encounter the minotaur.{/i}"
+    centered "{i}You reach another split road.{/i}"
+
+
+label lab7:
+    show sky1
+    show leftright
+    show screen stringbar
+    with dissolve
+    "{i}You look to the floor to see if another etching is marked there, but the stones appear flat and unscratched. You peer down each path but see nothing to distinguish between them.{/i}"
+    show stereogram
+    with dissolve
+    "{i}Frustrated and tired, you sit down to meditate, relaxing your eyes as you peer at the stone wall before you…{/i}"
+
+    menu:
+        "Go to the left":
+            jump badroom7
+
+        "Go to the right":
+            jump endinstructions
+
+
+label badroom7:
+
+    $currentstring-=1
+    hide leftright
+    hide browngrey
+    show deadend
+    with dissolve
+
+    "{i}You have reached a dead end, with no way forward.{/i}"
+
+    if currentstring > 0:
+        "You use a length of Ariadne’s thread to retrace your steps, returning to the previous room."
+        hide deadend with dissolve
+        jump lab7
+
+    if currentstring <= 0:
+        "{i}You reach for Ariadne’s thread but realize in panic that it was exhausted some time ago. You search frantically for the path, but it is as if the halls and passages are new and unrecognizable. Have you fallen victim to the labyrinth’s curse?{/i}"
+        "{i}You run, left and right, down the passages, only becoming more lost. You feel confused and dizzy, now unsure of where you are going and why you are here.{/i}"
+        thes "These walls are made of wood. At the end of this labyrinth is the fearsome Medusa. I am a truth-teller."
+        "{i}Theseus’s journey has come to an end. Try again?{/i}"
+        return
+
+
+###################### getting advisors ######################################################
 label endinstructions:
 
-
+    hide stereogram
     hide sky1
     hide sky2
-    hide stringbar
+    hide screen stringbar
     hide leftright
     hide athenians
     with dissolve
     centered "{i}As you venture further into the labyrinth, the winding corridors and intersections give way to a straight path – a hallway at the end of which you can faintly see a series of doors. An Athenian clad in white approaches:{/i}"
     show sky3
     show straight
+    show white
     with dissolve
 
 
@@ -284,13 +697,20 @@ label endinstructions:
     wc "Alas, I do not. But our fellow Athenians, who rest in this hallway, surely do. Choose among them they will surely off the knowledge you need. But choose these advisors carefully, for among them are deceiver who will just as surely lead you astray."
     thes "Many thanks for this wisdom, dear friend!"
     wc "Godspeed, Theseus!"
-
+    hide white
+    hide sky3
+    hide straight
+    with dissolve
 
 label advisor1:
+
+
+    centered "{i}As you depart from the honest man, you see a pair of Athenians down the hall and stop to hear their words.{/i}"
+    show sky3
+    show straight
     show athenians
     with dissolve
 
-    "{i}As you depart from the honest man, you see a pair of Athenians down the hall and stop to hear their words.{/i}"
     yc "Either I’m a truth-teller or Green is."
     gc "Yellow is a liar."
     "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
@@ -310,8 +730,21 @@ label advisor1:
             "{i}The Athenian joins you.{/i}"
 
 label advisor2:
+    hide athenians
+    hide sky3
+    hide straight
+    with dissolve
 
-    "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice an unusual pattern.{/i}"
+    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you noticesomething unusual about the stones.{/i}"
+
+    show sky3
+    show straight
+    show redblue with dissolve
+
+    "{i}You attempt to relax your eyes and meditate, since this approach provided guidance earlier, but no image appears. Perhaps you should look more closely at the rocks.{/i}"
+
+    hide redblue
+    with dissolve
     show upside
     with dissolve
     "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
@@ -330,9 +763,17 @@ label advisor2:
 
 label advisor3:
     hide upside
+    hide redblue
+    hide sky3
+    hide straight
     with dissolve
 
-    "{i}You proceed down the passage, now with two of your people following. Again you encounter a pair of Athenians.{/i}"
+    centered "{i}You proceed down the passage, now with two of your people following. Again you encounter a pair of Athenians.{/i}"
+
+    show sky3
+    show straight
+    show orangepurple
+    with dissolve
 
     oc "Either we’re both truth-tellers or we’re both liars."
     pc "One of us is a truth-teller and the other is a liar."
@@ -351,8 +792,18 @@ label advisor3:
 
 
 label advisor4:
-    "{i}The third Athenian joins your growing band.Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur. Neither speaks, but again you see a set of mysterious markings on the ground.{/i}"
-    show maze
+    hide sky3
+    hide orangepurple
+    hide straight
+
+    centered "{i}The third Athenian joins your growing band.Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur.{/i}"
+    show sky3
+    show straight
+    show browngrey
+    with dissolve
+    "{i}Neither speaks, but again you see a mysterious pattern on the ground.{/i}"
+    hide browngrey
+    show stereo2
     with dissolve
 
     "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
@@ -368,18 +819,20 @@ label advisor4:
 
 
 label curtains:
-    hide maze
+    hide stereo2
     hide straight
     hide sky3
+    hide browngrey
     with dissolve
     play music "audio/sb_pathfinder.mp3" fadein 2
     centered "{i}With four fellow Athenians at your side, you tread cautiously to the end of the hall.{/i}"
 
+    centered "{i}The passage widens, and a wall stands before you, with five doorways and five curtains. Behind one of those doorways lies the minotaur. Behind the others are the lost treasures of the gods. Though the treasures are tempting, they cannot distract from your mission.{/i}"
     show doors
     with dissolve
+    "{i}You turn to the other Athenians for guidance. {u}Remember: the advice they provide will only be accurate if they are indeed truth-tellers. If there are liars among them, they may lead you astray.{/u}"
+    "{i}To succeed in slaying the minotaur and saving your people, {u}correctly identify the minotaur’s room or all will be lost.{/u}{/i}"
 
-    centered "{i}The passage widens, and a wall stands before you, with five doorways and five curtains. Behind one of those curtains lies the minotaur. Behind the others are the lost treasures of the gods.{/i}"
-    centered "{i}You turn to the other Athenians, tempted by the treasures but knowing that {u}you must correctly identify the minotaur’s room{/u} or all will be lost. {/i}"
 
     if comp1 == "Correct":
         yc "The Shield is to the immediate right of the Fleece."
@@ -407,6 +860,9 @@ label curtains:
 
 
     menu:
+        ####add choices from above
+
+
         "Stab your sword through the 1st door.":
             jump wrongstab
 
@@ -441,11 +897,12 @@ label foundminotaur:
     hide doors
     hide athenians
     play sound "audio/minotaur.mp3"
+    show empty
     show deadminotaur
     with dissolve
 
-    centered "{i}…and the minotaur falls in a grotesque heap of man and beast!{/i}"
-    centered "{i}A gasp arises from the surrounding Athenians.{/i}"
+    "{i}…and the minotaur falls in a grotesque heap of man and beast!{/i}"
+    "{i}A gasp arises from the surrounding Athenians.{/i}"
     ########################line from green here?
 
     wc "Theseus, you have done it! The minotaur is defeated, and the terrible burden of Athens is lifted!"
