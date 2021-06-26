@@ -52,8 +52,8 @@ label start:
 
 
 
-    $currentstring = 10
-    $maxstring = 10
+    $currentstring = 8
+    $maxstring = 8
 
     scene black
 
@@ -87,7 +87,7 @@ label introduction:
     hide sword with dissolve
     show thread with dissolve
 
-    "{i}When you reach a dead end, use the thread to backtrack. With each step forward or back, your thread count will deplete (see the meter at top of screen).{/i}"
+    "{i}When you reach a dead end, use the thread to backtrack. With each step forward or back, your thread count will deplete.{/i}"
     hide thread with dissolve
 
     thes "My thanks, good Ariadne! And now I am ready."
@@ -170,7 +170,7 @@ label helnorth:
 
 
 label helsouth:
-    ari "Ariadne: Ah, very clever of you, dear Theseus! Now set forth, and may the gods be with you."
+    ari "Ah, very clever of you, dear Theseus! Now set forth, and may the gods be with you."
     jump endtutorial
 
 
@@ -186,7 +186,7 @@ label endtutorial:
 
 label lab1intro:
     centered"{i}As you enter the great labyrinth, you see little more than thick stone walls, dry and crumbling but sturdy. You follow the path as it twists and turns until you reach a junction, with a door on each side.{/i}"
-    "{i}Two men, recognizable for their Athenian attire, stand before you.{/i}"
+    centered "{i}You unwind the first length of Ariadne’s thread and tie it to a sconce on the wall. If you take a wrong path in the labyrinth, you can use this thread to retrace your steps. However, the thread will deplete as you progress, and once it has run out you can no longer use it. (See the meter at top of screen){/i}"
 
     show sky1
     show leftright
@@ -818,7 +818,7 @@ label advisor4:
     hide orangepurple
     hide straight
 
-    centered "{i}The third Athenian joins your growing band.Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur.{/i}"
+    centered "{i}The third Athenian joins your growing band. Though you are nearing the end of the passageway, two more people stand between you and the sleeping minotaur.{/i}"
 
     show sky3
     show straight
@@ -1001,7 +1001,7 @@ label goodend:
     show whiteship
     with dissolve
 
-    "{i}You, Theseus, have rescued the prisoners of Daedalus’s labyrinth. You return to Athens as the future kind, bringing with you the surviving Athenians as well as the treasure of the labyrinth:{/i}"
+    "{i}You, Theseus, have rescued the prisoners of Daedalus’s labyrinth. You return to Athens as the future king, bringing with you the surviving Athenians as well as the treasure of the labyrinth:{/i}"
     "{i}The Golden Fleece{/i}"
     "{i}Heracles’s Bow{/i}"
     "{i}The Shield of Achilles{/i}"
