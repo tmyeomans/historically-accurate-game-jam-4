@@ -887,46 +887,58 @@ label curtains:
     if comp4 == "Incorrect":
         grc "Neither the Fleece nor the Bow are next to the Shield."
 
+
+
+
+
     menu:
 
 
-#        "{color=ffba08}The Shield is to the immediate right of the Fleece.{/color}" if comp1 == "Correct"
-
-#        if comp1 == "Incorrect":
-#            "{color=90be6d}The Shield is to the immediate left of the Fleece.{/color}"
-
-#        if comp2 =="Correct":
-#            "{color=c9184a}Neither the Sword nor the Minotaur are next to the Bow.{/color}"
-
-#        if comp2 == "Incorrect":
-#            "{color=56cfe1}Neither the Sword nor the Shield are next to the Bow.{/color}"
-
-#        if comp3 =="Correct":
-#            pc "{color=deaaff}Neither the Minotaur nor the Sword are next to the Shield.{/color}"
-
-#        if comp3 == "Incorrect":
-#            oc "{color=ff9e00}Neither the Shield nor the Sword are next to the Minotaur.{/color}"
-
-#        if comp4 =="Correct":
-#            bc "{color=c38e70}Neither the Sword nor the Bow are next to the Fleece.{/color}"
-
-#        if comp4 == "Incorrect":
-#            grc "{color=adb5bd}Neither the Fleece nor the Bow are next to the Shield.{/color}"
-
-        "Stab your sword through the 1st door.":
+        "Stab your sword through the 1st door":
             jump wrongstab
 
-        "Stab your sword through the 2nd door.":
+        "Stab your sword through the 2nd door":
             jump foundminotaur
 
-        "Stab your sword through the 3rd door.":
+        "Stab your sword through the 3rd door":
             jump wrongstab
 
-        "Stab your sword through the 3rd door.":
+        "Stab your sword through the 3rd door":
             jump wrongstab
 
-        "Stab your sword through the 5th door.":
+        "Stab your sword through the 5th door":
             jump wrongstab
+
+        "You need to hear from the advisors again":
+            jump advisorsum
+
+label advisorsum:
+
+    if comp1 == "Correct":
+        "{color=ffba08}The Shield is to the immediate right of the Fleece.{/color}"
+
+    if comp1 == "Incorrect":
+        "{color=90be6d}The Shield is to the immediate left of the Fleece.{/color}"
+
+    if comp2 =="Correct":
+        "{color=c9184a}Neither the Sword nor the Minotaur are next to the Bow.{/color}"
+
+    if comp2 == "Incorrect":
+        "{color=56cfe1}Neither the Sword nor the Shield are next to the Bow.{/color}"
+
+    if comp3 =="Correct":
+        pc "{color=deaaff}Neither the Minotaur nor the Sword are next to the Shield.{/color}"
+
+    if comp3 == "Incorrect":
+        oc "{color=ff9e00}Neither the Shield nor the Sword are next to the Minotaur.{/color}"
+
+    if comp4 =="Correct":
+        bc "{color=c38e70}Neither the Sword nor the Bow are next to the Fleece.{/color}"
+
+    if comp4 == "Incorrect":
+        grc "{color=adb5bd}Neither the Fleece nor the Bow are next to the Shield.{/color}"
+
+
 
 
 label wrongstab:
@@ -977,6 +989,7 @@ label badend:
     show sea
     show blackship
     with dissolve
+    pause 2.0
     jump attribution
 
 label goodend:
