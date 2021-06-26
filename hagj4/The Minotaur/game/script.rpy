@@ -260,23 +260,30 @@ label green1:
 label correct1:
     $currentstring-=1
     hide leftright
+    hide stringback
     hide athenians
     hide sky1
     with dissolve
-    jump lab2
+    jump lab2intro
 
 
 label badroom1:
     $currentstring-=1
     hide leftright
+    hide stringback
     hide athenians
     show deadend
+    show stringback
     with dissolve
 
     "{i}You have reached a dead end, with no way forward.{/i}"
     if currentstring > 0:
         "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
-        hide deadend with dissolve
+        hide deadend
+        hide sky1
+        hide stringback
+        hide screen stringbar
+        with dissolve
         jump lab1
 
     if currentstring <= 0:
@@ -287,13 +294,17 @@ label badroom1:
         return
 
 
-label lab2:
+label lab2intro:
     hide screen stringbar
     with dissolve
     centered "{i}As you continue further, you see a three-way divide in the path. But there are no nearby Athenians to offer guidance.{/i}"
-    show screen stringbar
+
+
+label lab2:
     show sky1
     show threechoice
+    show stringback
+    show screen stringbar
     with dissolve
     pause 2.0
     show shapes
@@ -303,7 +314,7 @@ label lab2:
 
     menu:
         "Go to the left":
-            jump lab3
+            jump lab3intro
 
         "Go straight ahead":
             jump badroom2
@@ -311,10 +322,15 @@ label lab2:
         "Go to the right":
             jump badroom2
 
+        "Look again at the etching":
+            jump lab2
+
 label badroom2:
     $currentstring-=1
+    hide stringback
     hide threechoice
     show deadend
+    show stringback
     with dissolve
 
     "{i}You have reached a dead end, with no way forward.{/i}"
@@ -324,6 +340,7 @@ label badroom2:
         hide deadend
         hide shapes
         hide sky1
+        hide stringback
         with dissolve
         jump lab2
 
@@ -335,9 +352,10 @@ label badroom2:
         return
 
 
-label lab3:
+label lab3intro:
     hide threechoice
     hide sky1
+    hide stringback
     hide screen stringbar
     hide shapes
     with dissolve
@@ -346,12 +364,19 @@ label lab3:
 
     show sky1
     show leftright
+    show stringback
     show screen stringbar
     with dissolve
     $currentstring-=1
     pause 2.0
 
+
+label lab3:
+    show sky1
+    show leftright
+    show stringback
     show maze
+    show screen stringbar
     with dissolve
     "{i}A maze is etched on to the wall in front of you. You jump forward with excitement, believing this to be a map of the labyrinth itself. But in tracing its lines, you quickly realize that its passageways don’t match with those you’ve already traversed. Perhaps it will offer guidance in some other way?{/i}"
 
@@ -361,6 +386,9 @@ label lab3:
 
         "Go to the right":
             jump badroom3
+
+        "Look again at the maze":
+            jump lab3
 
 
 label badroom3:
@@ -374,7 +402,11 @@ label badroom3:
 
     if currentstring > 0:
         "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
-        hide deadend with dissolve
+        hide deadend
+        hide sky1
+        hide stringback
+        hide screen stringbar
+        with dissolve
         jump lab3
 
     if currentstring <= 0:
@@ -389,6 +421,8 @@ label lab4intro:
     hide maze
     hide sky1
     hide leftright
+    hide stringback
+    hide screen stringbar
     with dissolve
     centered "{i}That seems to have been the correct path, for you encounter yet another intersection, with two more Athenians idling nearby.{/i}"
 
@@ -397,7 +431,10 @@ label lab4:
     $currentstring-=1
     show sky1
     show leftright
+    show stringback
     show orangepurple
+    show stringback
+    show screen stringbar
     with dissolve
 
     oc "I am a truth-teller or she is a liar."
@@ -454,14 +491,20 @@ label badroom4:
     $currentstring-=1
     hide leftright
     hide orangepurple
+    hide stringback
     show deadend
+    show stringback
     with dissolve
 
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
         "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
-        hide deadend with dissolve
+        hide deadend
+        hide sky1
+        hide stringback
+        hide screen stringbar
+        with dissolve
         jump lab4
 
     if currentstring <= 0:
@@ -478,6 +521,7 @@ label lab5:
     hide sky1
     hide leftright
     hide orangepurple
+    hide stringback
     hide screen stringbar
     with dissolve
 
@@ -547,6 +591,7 @@ label goosewrong:
     hide straight
     hide sky1
     hide screen stringbar
+    hide stringback
     with dissolve
     jump lab6intro
 
@@ -554,6 +599,7 @@ label goosewrong:
 label lab6intro:
     hide straight
     hide sky1
+    hide stringback
     with dissolve
 
     centered "{i}As you follow the path, you encounter a pair of Athenian men. They have a strange look to their faces, as if their minds are already returned to Athens, eating olives in the agora.{/i}"
@@ -562,6 +608,7 @@ label lab6intro:
 label lab6:
     show sky1
     show leftright
+    show stringback
     show browngrey
     with dissolve
     show screen stringbar
@@ -612,15 +659,21 @@ label badroom6:
 
     $currentstring-=1
     hide leftright
+    hide stringback
     hide browngrey
     show deadend
+    show stringback
     with dissolve
 
     "{i}You have reached a dead end, with no way forward.{/i}"
 
     if currentstring > 0:
         "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
-        hide deadend with dissolve
+        hide deadend
+        hide sky1
+        hide screen stringbar
+        hide stringback
+        with dissolve
         jump lab6
 
     if currentstring <= 0:
@@ -635,6 +688,7 @@ label lab7intro:
     hide browngrey
     hide leftright
     hide straight
+    hide stringback
     hide screen stringbar
 
     centered "{i}You continue onward, following one winding path after another. You sense that the endpoint of the labyrinth is near and that you will soon encounter the minotaur.{/i}"
@@ -644,6 +698,7 @@ label lab7intro:
 label lab7:
     show sky1
     show leftright
+    show stringback
     show screen stringbar
     with dissolve
 
@@ -661,14 +716,17 @@ label lab7:
         "Go to the right":
             jump endinstructions
 
+        "Look again at the stone wall":
+            jump lab7
+
 
 label badroom7:
     $currentstring-=1
     hide leftright
     hide stereogram
-    hide sky1
-    hide screen stringbar
+    hide stringback
     show deadend
+    show stringback
     with dissolve
 
     "{i}You have reached a dead end, with no way forward.{/i}"
