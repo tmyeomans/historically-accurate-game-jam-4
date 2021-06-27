@@ -1,24 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 946, in script
-    if $ goosevar == "won":
-SyntaxError: invalid syntax (script.rpy, line 946)
+  File "game/script.rpy", line 1136, in script
+    centered "Other Images\n
+TypeError: a float is required
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 946, in script
-    if $ goosevar == "won":
-  File "renpy/ast.py", line 1892, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2247, in py_eval
-    code = py_compile(code, 'eval')
-  File "renpy/python.py", line 835, in py_compile
-    raise e
-SyntaxError: invalid syntax (script.rpy, line 946)
+  File "game/script.rpy", line 1136, in script
+    centered "Other Images\n
+  File "renpy/ast.py", line 715, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1406, in say
+    what = what % tag_quoting_dict
+TypeError: a float is required
 
 Windows-10-10.0.19041
 Ren'Py 7.4.6.1693
 The Minotaur 
-Sat Jun 26 08:01:34 2021
+Sun Jun 27 06:31:33 2021

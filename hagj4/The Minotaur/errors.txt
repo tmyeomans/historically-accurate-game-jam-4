@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 848: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "Look at the wall again"
-                            ^
+File "game/script.rpy", line 1148: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+        Some puzzles inspired by Nintendo’s Professor Layton video game series."
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Sat Jun 26 17:47:45 2021
+Sun Jun 27 06:21:06 2021

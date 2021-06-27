@@ -50,8 +50,6 @@ screen stringbar:
 # The game starts here.
 label start:
 
-
-
     $currentstring = 8
     $maxstring = 8
 
@@ -378,7 +376,7 @@ label lab3:
     show maze
     show screen stringbar
     with dissolve
-    "{i}A maze is etched on to the wall in front of you. You jump forward with excitement, believing this to be a map of the labyrinth itself. But in tracing its lines, you quickly realize that its passageways don’t match with those you’ve already traversed. Perhaps it will offer guidance in some other way?{/i}"
+    "{i}A maze is etched on to the wall in front of you. You jump forward with excitement, believing this to be a map of the labyrinth itself, but you quickly realize its passageways don’t match those you’ve traversed. Perhaps if you trace its path, it will point you in one direction or the other?{/i}"
 
     menu:
         "Go to the left":
@@ -541,6 +539,8 @@ label lab5:
     ajax "But I have a gift for you. And I will give it, so long as you can assure me that you are indeed Theseus, my prince. If you are him, I trust you have met the Cretan princess Ariadne. As it happens, so have I."
     ajax "Now tell me, Theseus, so that I may be reassured – what does Ariadne look like?"
     "{i}You feel the effects of the labyrinth clouding your mind, and even the recent image of Ariadne is as hazy as an encounter from childhood.{/i}"
+
+label maidens:
     "{i}You recall the appearances of maidens you’ve met recently. Which of them is the princess Ariadne?{/i}"
 
     hide ajax
@@ -561,6 +561,8 @@ label lab5:
             jump goosewrong
         "Describe the right-most person":
             jump goosewrong
+        "Look at the maidens again":
+            jump maidens
 
 
 label gooseright:
@@ -1037,10 +1039,10 @@ label foundminotaur:
     show empty
     show deadminotaur
     with dissolve
-
+    pause 3.0
     "{i}…and the minotaur falls in a grotesque heap of man and beast!{/i}"
     "{i}A gasp arises from the surrounding Athenians.{/i}"
-    ########################line from green here?
+
     wc "Theseus, you have done it! The minotaur is defeated, and the terrible burden of Athens is lifted!"
     thes "As was my destiny."
     wc "Now, let us leave, for the labyrinth’s exit is through the minotaur’s room."
@@ -1104,10 +1106,49 @@ label attribution:
     hide whiteship
     hide blackship
 
+    centered "Credits\n
+    Written by Stephen Latta\n
+    Programmed by Tanya Yeomans"
+    centered "Voice Acting by Kevin Buchanan"
+
     centered "Music by Scott Buckley:\n
-    Chasing Daylight - https://www.scottbuckley.com.au/library/chasing-daylight/\n
-    Pathfinder - https://www.scottbuckley.com.au/library/pathfinder/\n
-    Reverie - https://www.scottbuckley.com.au/library/reverie/"
+    Chasing Daylight - {a=https://www.scottbuckley.com.au/library/chasing-daylight/}https://www.scottbuckley.com.au/library/chasing-daylight/{/a}\n
+    Pathfinder - {a=https://www.scottbuckley.com.au/library/pathfinder/}https://www.scottbuckley.com.au/library/pathfinder/{/a}\n
+    Reverie - {a=https://www.scottbuckley.com.au/library/reverie/}https://www.scottbuckley.com.au/library/reverie/{/a}"
+
+    centered "Backgrounds\n
+    \n
+    \"Ancient wall from Constantinople\” by ashabot is licensed under CC BY-NC-SA 2.0, {a=https://www.flickr.com/photos/37912373962@N01/17722884819}https://www.flickr.com/photos/37912373962@N01/17722884819{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51274002784/}https://www.flickr.com/photos/193346300@N06/51274002784/{/a}\n
+    \“Agios Andreas, Epidavros, Greece: South room of the ruined house at the Arvanitian Vlachokiriakeika\” by Schuppi is licensed under CC BY-SA 4.0, {a=https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG}https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51272530927/}https://www.flickr.com/photos/193346300@N06/51272530927/{/a}
+    \“The Brimstone Hill Fortress on the island of St. Kitts, which was recognized World Heritage Site by the UNESCO in 1999\” by Martin Falbisoner is licensed under CC BY-SA 4.0, {a=https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_05.JPG}https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_05.JPG{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51273459018/}https://www.flickr.com/photos/193346300@N06/51273459018/{/a}\n
+    \“Ancient Corinth Ruins\” by Erik Drost is licensed under CC BY 2.0, {a=https://flickr.com/photos/62091376@N03/5987150330}https://flickr.com/photos/62091376@N03/5987150330{/a}. Image extensively modified\n
+    \“mirrored curtains\” by glasseyes view is licensed under CC BY-NC-SA 2.0, {a=https://www.flickr.com/photos/74708580@N00/9968216153}https://www.flickr.com/photos/74708580@N00/9968216153{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51274295995}https://www.flickr.com/photos/193346300@N06/51274295995{/a}\n
+    Hallway: CC0 1.0, {a=https://pxhere.com/en/photo/1351365}https://pxhere.com/en/photo/1351365{/a}\n
+    Wall: CC0 1.0, {a=https://pxhere.com/pt/photo/1616354}https://pxhere.com/pt/photo/1616354{/a}\n
+    Sky Texture 1: CC0 1.0,{a=https://pxhere.com/pt/photo/1616354}https://pxhere.com/pt/photo/1616354{/a}\n
+    Sky Texture 2: CC0 1.0, {a=https://pxhere.com/en/photo/667822}https://pxhere.com/en/photo/667822{/a}\n
+    Sky Texture 3: CC0 1.0, {a=https://pxhere.com/en/photo/1643067}https://pxhere.com/en/photo/1643067{/a}\n
+    Sky Texture 4: CC0 1.0, {a=https://pxhere.com/en/photo/804994}https://pxhere.com/en/photo/804994{/a}"
+
+    centered "People\n
+    \n
+    Beach, Chandler B. The New Student’s Reference Work: for teachers, students and families. F.E. Compton and Company, 1914. {a=https://commons.wikimedia.org/wiki/File:LA2-NSRW-2-0064_(1-7).jpg}https://commons.wikimedia.org/wiki/File:LA2-NSRW-2-0064_(1-7).jpg{/a}\n
+    Kretschmer, Albert, and Dr. Carl Rohrbach, The Costumes of All Nations, Henry Sotheran & Co, 1882. {a=https://commons.wikimedia.org/wiki/File:Ancient_Times,_Greek._-_009_-_Costumes_of_All_Nations_(1882).JPG}https://commons.wikimedia.org/wiki/File:Ancient_Times,_Greek._-_009_-_Costumes_of_All_Nations_(1882).JPG{/a} and {a=https://commons.wikimedia.org/wiki/File:Ancient_Times,_Greek._-_011_-_Costumes_of_All_Nations_(1882).JPG}https://commons.wikimedia.org/wiki/File:Ancient_Times,_Greek._-_011_-_Costumes_of_All_Nations_(1882).JPG{/a}."
+
+    centered "Other Images\n
+    \n
+    \“1:10 models Roman ships, 1: cargo ship based on the London-Blackfriars wreck dated to about 150 AD, 3: model based on the Oceanus mosaic fom Bad Kreuznach, Museum für Antike Schiffahrt, Mainz\” by Carole Raddato is licensed under CC BY-SA 2.0, {a=https://commons.wikimedia.org/wiki/File:Blackfriars_I_ship_model.jpg}https://commons.wikimedia.org/wiki/File:Blackfriars_I_ship_model.jpg{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51273483043}https://www.flickr.com/photos/193346300@N06/51273483043{/a}\n
+    \“A Greylag Goose\” by Jdforresteris licensed under CC BY 1.0, {a=https://commons.wikimedia.org/w/index.php?curid=26109}https://commons.wikimedia.org/w/index.php?curid=26109{/a}. Image extensively modified.\n
+    Minotaur: by Parker_West, licensed under Pixabay License, {a=https://pixabay.com/ko/illustrations/%%ec%%bc%%84-%%ed%%83%%80-%%ec%%9a%%b0-%%eb%%a3%%a8%%ec%%8a%%a4-%%eb%%af%%b8%%eb%%85%%b8%%ed%%83%%80%%ec%%9a%%b0%%eb%%a1%%9c%%ec%%8a%%a4-3329266}https://pixabay.com/ko/illustrations/%%ec%%bc%%84-%%ed%%83%%80-%%ec%%9a%%b0-%%eb%%a3%%a8%%ec%%8a%%a4-%%eb%%af%%b8%%eb%%85%%b8%%ed%%83%%80%%ec%%9a%%b0%%eb%%a1%%9c%%ec%%8a%%a4-3329266/{/a}\n
+    \“Bull Head - symbol of Baal Hadad\” by Camocon licensed under CC0 1.0, {a=https://commons.wikimedia.org/wiki/File:Bull_head.png}https://commons.wikimedia.org/wiki/File:Bull_head.png{/a}"
+
+    centered "Puzzles\n
+    \n
+    Knights and Knaves Puzzles adapted from those on Dr. Joe Lau and Dr. Jonathan Chan’s Critical Thinking website: {a=https://philosophy.hku.hk/think/logic/knights.php}https://philosophy.hku.hk/think/logic/knights.php{/a}\n
+    Stereogram created with {a=https://www.easystereogrambuilder.com/}https://www.easystereogrambuilder.com/{/a}\n
+    Maze created with {a=http://www.mazegenerator.net/}http://www.mazegenerator.net/{/a}\n
+    \n
+    Some puzzles inspired by Nintendo’s Professor Layton video game series."
 
 
     return
