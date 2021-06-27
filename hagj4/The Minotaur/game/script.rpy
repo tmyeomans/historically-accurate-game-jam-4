@@ -556,12 +556,16 @@ label maidens:
             $ goosevar = "won"
             jump gooseright
         "Describe the person second from left":
+            $ goosevar = "loss"
             jump goosewrong
         "Describe the person second from right":
+            $ goosevar = "loss"
             jump goosewrong
         "Describe the right-most person":
+            $ goosevar = "loss"
             jump goosewrong
         "Look at the maidens again":
+            $ goosevar = "loss"
             jump maidens
 
 
@@ -772,13 +776,13 @@ label endinstructions:
     thes "I have. And from your words I know that you are among the truth-tellers of my kin. So tell me: where is the minotaur, that I may slay it?"
     wc "The minotaur is at the end of this hall; that much is known. But as noble as you are, you cannot defeat it in combat, for its strength far exceeds that of any man."
     thes "So what must I do?"
-    wc "As night comes, the minotaur rests, laying behind a curtained door. One swift strike of your sword through the curtain may – if Tyche favours you, end its life."
+    wc "As night comes, the minotaur rests, laying behind a curtained door. One swift strike of your sword through the curtain may – if Tyche favours you - end its life."
     thes "Then that is what I shall do!"
     wc "But wait! For Daedalus created several other such rooms, each of which holds a great treasure of the land: the Golden Fleece, Heracles’s Bow, the Shield of Achilles, and the Sword of Peleus."
     wc "I fear that if you strike into one of these rooms of treasure you’ll succeed only in awakening the beast, and shall soon thereafter be devoured."
     thes "Do you know which room is which?"
     wc "Alas, I do not. But our fellow Athenians, who rest in this hallway, surely do."
-    wc"Choose among them they will surely off the knowledge you need. But choose these advisors carefully, for among them are deceiver who will just as surely lead you astray."
+    wc"Choose among them they will surely off the knowledge you need. But choose these advisors carefully, for among them are deceivers who will just as surely lead you astray."
     thes "Many thanks for this wisdom, dear friend!"
     wc "Godspeed, Theseus!"
 
@@ -820,7 +824,7 @@ label advisor2:
     hide straight
     with dissolve
 
-    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice something unusual about the stones.{/i}"
+    centered "{i}You venture further along the path, seeing another pair of captives. Neither speaks as you approach. However, upon the stone floor of the path you notice an unusual pattern.{/i}"
 
     show sky3
     show straight
@@ -1081,6 +1085,9 @@ label goodend:
     if goosevar == "won":
         jump goosescreen
     jump attribution
+
+    if goosevar == "loss":
+        jump attribution
 
 
 label goosescreen:
