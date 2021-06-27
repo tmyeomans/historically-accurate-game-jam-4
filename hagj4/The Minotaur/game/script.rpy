@@ -17,7 +17,7 @@ init:
      $ gc= Character("Green",color = "#90be6d", what_color = "#90be6d")
 
 init:
-     $ wc= Character("White",color = "#FFFFFF", what_color = "#FFFFFF")
+     $ wc= Character("Orion",color = "#FFFFFF", what_color = "#FFFFFF")
 
 init:
      $ rc= Character("Red",color = "#c9184a", what_color = "#c9184a")
@@ -733,7 +733,11 @@ label badroom7:
 
     if currentstring > 0:
         "{i}You use a length of Ariadne’s thread to retrace your steps, returning to the previous room.{/i}"
-        hide deadend with dissolve
+        hide deadend
+        hide sky1
+        hide stringback
+        hide screen stringbar
+        with dissolve
         jump lab7
 
     if currentstring <= 0:
@@ -762,7 +766,7 @@ label endinstructions:
     show white
     with dissolve
 
-    wc "Ah! The brave prince Theseus! You have no doubt come to save us from this torturous maze?"
+    wc "Ah! The brave prince Theseus! I am Orion. You have no doubt come to save us from this torturous maze?"
     thes "I have. And from your words I know that you are among the truth-tellers of my kin. So tell me: where is the minotaur, that I may slay it?"
     wc "The minotaur is at the end of this hall; that much is known. But as noble as you are, you cannot defeat it in combat, for its strength far exceeds that of any man."
     thes "So what must I do?"
@@ -796,7 +800,7 @@ label advisor1:
     menu:
         "{color=#ffba08}(Yellow: Either I’m a truth-teller or Green is){/color}"
         "{color=#90be6d}(Green: Yellow is a liar){/color}"
-        "{color=#FFFFFF}{i} You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}{/color}"
+        "{color=#FFFFFF}{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}{/color}"
 
 
         "Ask Yellow to join you.":
@@ -820,6 +824,8 @@ label advisor2:
     show straight
     show redblue with dissolve
 
+label advisor2puzzle:
+
     "{i}You attempt to relax your eyes and meditate, since this approach provided guidance earlier, but no image appears. Perhaps you should look more closely at the rocks.{/i}"
 
     hide redblue
@@ -832,14 +838,15 @@ label advisor2:
     menu:
         "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
 
-        "Ask Red to join you.":
+        "Ask Red to join you":
             $ comp2 = "Correct"
 
 
-        "Ask Blue to join you.":
+        "Ask Blue to join you":
             $ comp2 = "Incorrect"
 
-
+        "Look at the wall again":
+            jump advisor2puzzle
 
 label advisor3:
     hide upside
@@ -864,10 +871,10 @@ label advisor3:
         "{color=#deaaff}(Purple: One of us is a truth-teller and the other is a liar){/color}"
         "{i}You can ask only one of these Athenians to join you as an advisor. Who do you choose?{/i}"
 
-        "Ask Orange to join you.":
+        "Ask Orange to join you":
             $ comp3 = "Incorrect"
 
-        "Ask Purple to join you.":
+        "Ask Purple to join you":
             $ comp3 = "Correct"
 
 
@@ -883,6 +890,8 @@ label advisor4:
     show browngrey
     with dissolve
 
+label advisor4puzzle:
+
     "{i}Neither speaks, but again you see a mysterious pattern on the ground.{/i}"
 
     hide browngrey
@@ -897,9 +906,11 @@ label advisor4:
         "Ask Brown to join you":
             $ comp4 = "Correct"
 
-        "Ask Grey to join you.":
+        "Ask Grey to join you":
             $ comp4 = "Incorrect"
 
+        "Look at the ground again":
+            jump advisor4puzzle
 
 label curtains:
     hide stereo2
@@ -946,7 +957,7 @@ label curtains:
         grc "Neither the Fleece nor the Bow are next to the Shield."
 
 
-
+label decision:
 
 
     menu:
@@ -973,31 +984,31 @@ label curtains:
 label advisorsum:
 
     if comp1 == "Correct":
-        "{color=ffba08}The Shield is to the immediate right of the Fleece.{/color}"
+        yc "The Shield is to the immediate right of the Fleece."
 
     if comp1 == "Incorrect":
-        "{color=90be6d}The Shield is to the immediate left of the Fleece.{/color}"
+        gc "The Shield is to the immediate left of the Fleece."
 
     if comp2 =="Correct":
-        "{color=c9184a}Neither the Sword nor the Minotaur are next to the Bow.{/color}"
+        rc"Neither the Sword nor the Minotaur are next to the Bow."
 
     if comp2 == "Incorrect":
-        "{color=56cfe1}Neither the Sword nor the Shield are next to the Bow.{/color}"
+        blc "Neither the Sword nor the Shield are next to the Bow."
 
     if comp3 =="Correct":
-        pc "{color=deaaff}Neither the Minotaur nor the Sword are next to the Shield.{/color}"
+        pc "Neither the Minotaur nor the Sword are next to the Shield."
 
     if comp3 == "Incorrect":
-        oc "{color=ff9e00}Neither the Shield nor the Sword are next to the Minotaur.{/color}"
+        oc "Neither the Shield nor the Sword are next to the Minotaur."
 
     if comp4 =="Correct":
-        bc "{color=c38e70}Neither the Sword nor the Bow are next to the Fleece.{/color}"
+        bc "Neither the Sword nor the Bow are next to the Fleece."
 
     if comp4 == "Incorrect":
-        grc "{color=adb5bd}Neither the Fleece nor the Bow are next to the Shield.{/color}"
+        grc "Neither the Fleece nor the Bow are next to the Shield."
 
 
-
+    jump decision
 
 label wrongstab:
     hide doors

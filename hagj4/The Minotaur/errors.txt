@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 918: expected statement.
-    "{color=ffba08}The Shield is to the immediate right of the Fleece.{/color}" if comp1 == "Correct"
-                                                                                ^
+File "game/script.rpy", line 848: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Look at the wall again"
+                            ^
 
 Ren'Py Version: Ren'Py 7.4.6.1693
-Sat Jun 26 11:45:48 2021
+Sat Jun 26 17:47:45 2021
