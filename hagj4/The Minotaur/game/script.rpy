@@ -1118,15 +1118,15 @@ label attribution:
     Programmed by Tanya Yeomans"
     centered "Voice Acting by Kevin Buchanan"
 
-    centered "Music by Scott Buckley:\n
-    Chasing Daylight - {a=https://www.scottbuckley.com.au/library/chasing-daylight/}https://www.scottbuckley.com.au/library/chasing-daylight/{/a}\n
-    Pathfinder - {a=https://www.scottbuckley.com.au/library/pathfinder/}https://www.scottbuckley.com.au/library/pathfinder/{/a}\n
-    Reverie - {a=https://www.scottbuckley.com.au/library/reverie/}https://www.scottbuckley.com.au/library/reverie/{/a}"
+    centered "Music\n
+    \"Chasing Daylight\"by Scott Buckley is licensed under CC BY 4.0 - {a=https://www.scottbuckley.com.au/library/chasing-daylight/}https://www.scottbuckley.com.au/library/chasing-daylight/{/a}\n
+    \"Pathfinder\" by Scott Buckley is licensed under CC BY 4.0 - {a=https://www.scottbuckley.com.au/library/pathfinder/}https://www.scottbuckley.com.au/library/pathfinder/{/a}\n
+    \"Reverie\"by Scott Buckley is licensed under CC BY 4.0 - {a=https://www.scottbuckley.com.au/library/reverie/}https://www.scottbuckley.com.au/library/reverie/{/a}"
 
     centered "Backgrounds\n
     \n
     \"Ancient wall from Constantinople\” by ashabot is licensed under CC BY-NC-SA 2.0, {a=https://www.flickr.com/photos/37912373962@N01/17722884819}https://www.flickr.com/photos/37912373962@N01/17722884819{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51274002784/}https://www.flickr.com/photos/193346300@N06/51274002784/{/a}\n
-    \“Agios Andreas, Epidavros, Greece: South room of the ruined house at the Arvanitian Vlachokiriakeika\” by Schuppi is licensed under CC BY-SA 4.0, {a=https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG}https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51272530927/}https://www.flickr.com/photos/193346300@N06/51272530927/{/a}
+    \“Agios Andreas, Epidavros, Greece: South room of the ruined house at the Arvanitian Vlachokiriakeika\” by Schuppi is licensed under CC BY-SA 4.0, {a=https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG}https://commons.wikimedia.org/wiki/File:Vlachokiriakeika_06.JPG{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51272530927/}https://www.flickr.com/photos/193346300@N06/51272530927/{/a}\n
     \“The Brimstone Hill Fortress on the island of St. Kitts, which was recognized World Heritage Site by the UNESCO in 1999\” by Martin Falbisoner is licensed under CC BY-SA 4.0, {a=https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_05.JPG}https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_05.JPG{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51273459018/}https://www.flickr.com/photos/193346300@N06/51273459018/{/a}\n
     \“Ancient Corinth Ruins\” by Erik Drost is licensed under CC BY 2.0, {a=https://flickr.com/photos/62091376@N03/5987150330}https://flickr.com/photos/62091376@N03/5987150330{/a}. Image extensively modified\n
     \“mirrored curtains\” by glasseyes view is licensed under CC BY-NC-SA 2.0, {a=https://www.flickr.com/photos/74708580@N00/9968216153}https://www.flickr.com/photos/74708580@N00/9968216153{/a}. Image extensively modified; revised version available at {a=https://www.flickr.com/photos/193346300@N06/51274295995}https://www.flickr.com/photos/193346300@N06/51274295995{/a}\n
