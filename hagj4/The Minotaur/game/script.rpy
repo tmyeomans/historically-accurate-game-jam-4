@@ -978,7 +978,7 @@ label decision:
         "Stab your sword through the 3rd door":
             jump wrongstab
 
-        "Stab your sword through the 3rd door":
+        "Stab your sword through the 4th door":
             jump wrongstab
 
         "Stab your sword through the 5th door":
